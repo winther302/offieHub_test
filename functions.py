@@ -1,7 +1,11 @@
-
+import re
 def size_func(data:str) -> str:
-    value = 0
-    unit = "unkown"
+    matches = re.findall("([0-9]+\.*[0-9]+)( )*(m2|km2|ft2)*",data)
+    value = str(matches[0][0])
+    unit= str(matches[0][2])
+    if(unit == ''):
+        unit = "m2"
+    print(unit)
     output = "{\n  value: " + str(value) + ",\n  unit: '" + unit + "'\n}"
     return output
 
