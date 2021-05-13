@@ -2,10 +2,17 @@ import re
 
 def size_func(data:str) -> str:
     matches = re.findall("([0-9]+\.*[0-9]+)( )*(m2|km2|ft2|kvadratmeter)*",data)
+
+    #Stops if no matches is found
+    if(check_for_empty(matches)):
+        return 'No matches'
+
     value = str(matches[0][0])
     unit= str(matches[0][2])
+
+    #More cases could be added, if more exists
     if(unit == 'kvadratmeter'):
-        unit = "m2"
+        unit = 'm2'
     output = "{\n  value: " + str(value) + ",\n  unit: '" + unit + "'\n}"
     return output
 
@@ -16,8 +23,19 @@ def price_func(data:str) -> str:
     currency = re.findall(r'(kr|eur)',data)
     service = re.findall(r'(((eksl\.)|(inkl\.))\sdrift)',data)
 
-    unit = check_for_empty(unit)
-    currency = check_for_empty(currency)
+    if(check_for_empty(unit)):
+        unit = unit[0]
+    else:
+        unit = 'undefined'
+
+    if(check_for_empty(currency)):
+        currency = currency[0]
+    else:
+        currency = currency[0]
+
+    #More cases could be added, for different types of valuta
+    if(currency == 'kr'):
+        currency = 'DKK'
 
     if(len(term) == 0):
         term = 'undefined'
@@ -26,9 +44,6 @@ def price_func(data:str) -> str:
     elif (term[0][0] == 'år' or term[0][0] == 'År'):
         term = 'year'
 
-    if(currency == 'kr'):
-        currency = 'DKK'
-
     if(len(service) == 0):
         service = 'undefined'
     elif(service[0][0] == 'inkl. drift'):
@@ -36,27 +51,26 @@ def price_func(data:str) -> str:
     elif(service[0][0] == 'eksl. drift'):
         service = 'false'
 
+    #Remove punct so the numbers is consistent
     value = value.replace(".","")
+
     output = "{\n\tvalue: " + str(value) + ",\n\tterm: '" + term+ "',\n\tunit: '"+str(unit)+"',\n\tcurrency: '" + str(currency) + "',\n\twithService: " + str(service) + "\n}"
 
-    #print(service)
     return output
 
-def check_for_empty(input_lst:list) -> str:
-    result = ''
-    if(len(input_lst) == 0):
-        result = 'undefined'
-    else:
-        result = input_lst[0]
-    return result
-
-
 def contact_func(data:str) -> str:
-    name = re.findall(r'([A-Z]+[a-z]+\s([A-Z][a-z]*(å|æ|ø)*[a-z]*\s*)*)',data)[0][0]
+    name = re.findall(r'([A-Z]+[a-z]+\s([A-Z][a-z]*(å|æ|ø)*[a-z]*\s*)*)',data)
     email = re.findall(r'([a-zA-Z]+@[a-zA-Z]*\.[a-zA-Z]+)',data)
-    print(email)
     number = re.findall(r'(\+*(\d+\s*)+)',data)
-    role = 'undefined'
+    role = re.findall(r'([A-Z]*[a-z]*æ*å*ø*[a-z]*\-*\s)', data)
+    role_combined = ''.join(role)
+
+    if(len(name) ==  0):
+        name= "undefined"
+    else:
+        name = name[0][0]
+    print(name)
+
     if(len(email) == 0):
         email = 'undefined'
     else:
@@ -67,9 +81,23 @@ def contact_func(data:str) -> str:
     else:
         number = number[0][0].strip('\n')
 
+    #Remove founed name from tole tag
+    names = name.split(' ')
+    for name_ in names:
+        role_combined = role_combined.replace(name_, "")
+        role_combined = role_combined.replace("dk", "")
+        role_combined = role_combined.strip("\n")
+    role = role_combined
+
     output = "{\n  name: '" + str(name) + "',\n  role: '" + role+ "',\n  phone: '"+str(number)+"'\n  email: '" + str(email) + "'\n}"
     return output
 
+def check_for_empty(input_lst:list):
+    if(len(input_lst) == 0):
+        return False
+    return True
+
+# Takes file with testes on different lines in, outputs the results in output file
 def make_output(input_file:str,output_file:str, func):
     with open(input_file,'r') as f:
         input = f.readlines()
@@ -83,6 +111,11 @@ def main():
     make_output("size_test_out/size_function_test","size_test_out/size_func_out", size_func)
     make_output("price_test_out/price_func_test","price_test_out/price_func_out", price_func)
     make_output("contact_test_out/contact_func_test","contact_test_out/contact_func_out", contact_func)
+    #To run the functions only on one line uncommentet following and insert line:
+    #print(size_func("input string"))
+    #print(price_func("input string"))
+    #print(contact_func("input string"))
+
 
 if __name__ == "__main__":
     main()

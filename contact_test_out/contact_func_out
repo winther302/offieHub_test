@@ -1,28 +1,28 @@
 Case 0: JAMES PETERSON Senior Associate +45 60 20 20 56
 {
   name: 'Senior Associate ',
-  role: 'undefined',
+  role: 'JAMES PETERSON       ',
   phone: '+45 60 20 20 56'
   email: 'undefined'
 }
 Case 1: Sofie Lassen, Indeh aver Ejendomsmægler & Valuar, MDE Mobil: 21441080 E - mail: erhverv@maeglerteam.dk
 {
   name: 'Sofie Lassen',
-  role: 'undefined',
+  role: '  Indeh aver Ejendomsmægler   MDE   E -  ',
   phone: '21441080 '
   email: 'erhverv@maeglerteam.dk'
 }
 Case 2: Mads Peter Jensen + 45 10908822 mpj@kereby.dk
 {
   name: 'Mads Peter Jensen ',
-  role: 'undefined',
+  role: '      ',
   phone: '45 10908822 '
   email: 'mpj@kereby.dk'
 }
 Case 3: Partner, Salgs- og udlejningschef Karl Møller Hansen kmh@edc.dk +45 58600102
 {
   name: 'Karl Møller Hansen ',
-  role: 'undefined',
+  role: ' Salgs- og udlejningschef      ',
   phone: '+45 58600102'
   email: 'kmh@edc.dk'
 }
