@@ -1,0 +1,56 @@
+{
+	value: 4728000,
+	term: 'undefined',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+{
+	value: 394000,
+	term: 'month',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+{
+	value: 12376,
+	term: 'undefined',
+	unit: 'm2',
+	currency: 'DKK',
+	withService: undefined
+}
+{
+	value: 11235,
+	term: 'month',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+{
+	value: 12376,
+	term: 'year',
+	unit: 'm2',
+	currency: 'DKK',
+	withService: undefined
+}
+{
+	value: 4728000,
+	term: 'year',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+{
+	value: 4728000,
+	term: 'year',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: false
+}
+{
+	value: 950,
+	term: 'undefined',
+	unit: 'm2',
+	currency: 'DKK',
+	withService: true
+}

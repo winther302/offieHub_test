@@ -1,0 +1,64 @@
+Case 0: 4.728.000 kr.
+{
+	value: 4728000,
+	term: 'undefined',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+Case 1: Månedlig leje: kr. 394.000
+{
+	value: 394000,
+	term: 'month',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+Case 2: kr. 12.376 pr. m2
+{
+	value: 12376,
+	term: 'undefined',
+	unit: 'm2',
+	currency: 'DKK',
+	withService: undefined
+}
+Case 3: Leje kr. 11.235,- pr. måned
+{
+	value: 11235,
+	term: 'month',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+Case 4: 12.376 kr. pr. m2 pr. år
+{
+	value: 12376,
+	term: 'year',
+	unit: 'm2',
+	currency: 'DKK',
+	withService: undefined
+}
+Case 5: 4.728.000 kr. pr. år
+{
+	value: 4728000,
+	term: 'year',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: undefined
+}
+Case 6: Årlig leje kr. 4.728.000 eksl. drift
+{
+	value: 4728000,
+	term: 'year',
+	unit: 'undefined',
+	currency: 'DKK',
+	withService: false
+}
+Case 7: Årlig leje inkl. drift pr. m2: kr. 950
+{
+	value: 950,
+	term: 'year',
+	unit: 'm2',
+	currency: 'DKK',
+	withService: true
+}
